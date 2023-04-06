@@ -62,6 +62,6 @@
     ]
   },
   "lint-staged": {
-    "*.js": "eslint --cache --fix"
+    "*.{ts, html}": "ng lint --cache --fix"
   }
 }
