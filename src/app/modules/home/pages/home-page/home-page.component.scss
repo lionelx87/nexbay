@@ -1,0 +1,17 @@
+.home-page {
+
+    &__grid {
+
+        margin: .5rem 0;
+        gap: 2rem;
+
+        &__options {
+            border: 1px solid red;
+        }
+
+        &__list {
+            border: 1px solid red;
+            min-height: calc(100vh - 6.875rem);
+        }
+    }
+}
