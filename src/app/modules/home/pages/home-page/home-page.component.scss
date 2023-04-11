@@ -10,8 +10,36 @@
         }
 
         &__list {
-            border: 1px solid red;
+            // border: 1px solid red;
             min-height: calc(100vh - 6.875rem);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            &__bag {
+                display: inline-block;
+
+                path:nth-child(1) {
+                    fill: transparent;
+                }
+                path:nth-child(2) {
+                    fill: transparent;
+                }
+                path:nth-child(3) {
+                    fill: #5EEAD4;
+                }
+                path:nth-child(4) {
+                    fill: #5EEAD4;
+                }
+                path:nth-child(5) {
+                    fill: #5EEAD4;
+                }
+                path:nth-child(6) {
+                    fill: #5EEAD4;
+                }
+
+            }
         }
     }
 }
