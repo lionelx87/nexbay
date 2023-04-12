@@ -7,6 +7,7 @@ import { SharedModule } from './shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { PrimeNGConfig } from 'primeng/api';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const initializeAppFactory = (primeConfig: PrimeNGConfig) => () => {
   primeConfig.ripple = true;
@@ -16,6 +17,7 @@ const initializeAppFactory = (primeConfig: PrimeNGConfig) => () => {
   declarations: [AppComponent],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
     AngularSvgIconModule.forRoot(),

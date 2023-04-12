@@ -1,6 +1,33 @@
 <div class="home-page">
     <div class="grid home-page__grid">
-        <div class="col hidden md:block home-page__grid__options">1</div>
+        <div class="col hidden md:block home-page__grid__options">
+            <p-panel header="Listas más usadas" [toggleable]="true">
+                <ng-template pTemplate="icons">
+                        <button pButton class="p-panel-header-icon p-link" (click)="menu.toggle($event)">
+                            <span class="pi pi-cog"></span>
+                        </button>
+                        <p-menu #menu id="config_menu" [model]="items" [popup]="true"></p-menu>
+                </ng-template>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                    cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </p-panel>
+
+            <p-panel header="Papelera" [toggleable]="true">
+                <ng-template pTemplate="icons">
+                        <button pButton class="p-panel-header-icon p-link" (click)="menu.toggle($event)">
+                            <span class="pi pi-cog"></span>
+                        </button>
+                        <p-menu #menu id="config_menu" [model]="items" [popup]="true"></p-menu>
+                </ng-template>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                    cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </p-panel>
+
+        </div>
         <div class="col home-page__grid__list">
             <svg-icon src="assets/icons/bag.svg" [svgStyle]="{ 'width.px': 256 }" class="home-page__grid__list__bag" ></svg-icon>
             <button pButton pRipple type="button" label="Crear Lista" ></button>

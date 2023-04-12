@@ -6,11 +6,16 @@
         gap: 2rem;
 
         &__options {
-            border: 1px solid red;
+
+            @media screen and (min-width: 768px){
+                display: flex !important;
+                flex-direction: column;
+                justify-content: center;
+                gap: 2rem;
+            }
         }
 
         &__list {
-            // border: 1px solid red;
             min-height: calc(100vh - 6.875rem);
             display: flex;
             flex-direction: column;

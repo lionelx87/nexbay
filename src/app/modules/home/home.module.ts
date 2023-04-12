@@ -6,6 +6,8 @@ import { HomePageComponent } from './pages/home-page/home-page.component';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { ButtonModule } from 'primeng/button';
 import { RippleModule } from 'primeng/ripple';
+import { PanelModule } from 'primeng/panel';
+import { MenuModule } from 'primeng/menu';
 
 @NgModule({
   declarations: [HomePageComponent],
@@ -15,6 +17,8 @@ import { RippleModule } from 'primeng/ripple';
     AngularSvgIconModule,
     ButtonModule,
     RippleModule,
+    PanelModule,
+    MenuModule,
   ],
 })
 export class HomeModule {}
