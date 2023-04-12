@@ -1,6 +1,6 @@
 <div class="home-page">
-    <div class="grid home-page__grid">
-        <div class="col hidden md:block home-page__grid__options">
+    <div class="grid home-page__content">
+        <div class="col hidden md:block suggestions">
             <p-panel header="Listas más usadas" [toggleable]="true">
                 <ng-template pTemplate="icons">
                         <button pButton class="p-panel-header-icon p-link" (click)="menu.toggle($event)">
@@ -28,8 +28,8 @@
             </p-panel>
 
         </div>
-        <div class="col home-page__grid__list">
-            <svg-icon src="assets/icons/bag.svg" [svgStyle]="{ 'width.px': 256 }" class="home-page__grid__list__bag" ></svg-icon>
+        <div class="col start-up">
+            <svg-icon src="assets/icons/bag.svg" [svgStyle]="{ 'width.px': 256 }" class="start-up__icon" ></svg-icon>
             <button pButton pRipple type="button" label="Crear Lista" ></button>
         </div>
     </div>

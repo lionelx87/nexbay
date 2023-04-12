@@ -1,11 +1,11 @@
 .home-page {
 
-    &__grid {
+    &__content {
 
         margin: .5rem 0;
         gap: 2rem;
 
-        &__options {
+        .suggestions {
 
             @media screen and (min-width: 768px){
                 display: flex !important;
@@ -15,14 +15,14 @@
             }
         }
 
-        &__list {
+        .start-up {
             min-height: calc(100vh - 6.875rem);
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
 
-            &__bag {
+            &__icon {
                 display: inline-block;
 
                 path:nth-child(-n + 2) {
