@@ -5,6 +5,7 @@ import { HomeRoutingModule } from './home-routing.module';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { ButtonModule } from 'primeng/button';
+import { RippleModule } from 'primeng/ripple';
 
 @NgModule({
   declarations: [HomePageComponent],
@@ -13,6 +14,7 @@ import { ButtonModule } from 'primeng/button';
     HomeRoutingModule,
     AngularSvgIconModule,
     ButtonModule,
+    RippleModule,
   ],
 })
 export class HomeModule {}
