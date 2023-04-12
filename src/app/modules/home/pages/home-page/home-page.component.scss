@@ -25,22 +25,10 @@
             &__bag {
                 display: inline-block;
 
-                path:nth-child(1) {
+                path:nth-child(-n + 2) {
                     fill: transparent;
                 }
-                path:nth-child(2) {
-                    fill: transparent;
-                }
-                path:nth-child(3) {
-                    fill: #5EEAD4;
-                }
-                path:nth-child(4) {
-                    fill: #5EEAD4;
-                }
-                path:nth-child(5) {
-                    fill: #5EEAD4;
-                }
-                path:nth-child(6) {
+                path:nth-child(n + 3) {
                     fill: #5EEAD4;
                 }
 
