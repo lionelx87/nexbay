@@ -1,0 +1,11 @@
+{
+    "home": {
+        "suggestions": {
+            "moreSuggestions": "Sugeridas",
+            "recycle": "Papelera"
+        },
+        "startUp": {
+            "title": "Crear Lista"
+        }
+    }
+}
