@@ -1,17 +1,38 @@
 .home-page {
 
-    &__grid {
+    &__content {
 
         margin: .5rem 0;
         gap: 2rem;
 
-        &__options {
-            border: 1px solid red;
+        .suggestions {
+
+            @media screen and (min-width: 768px){
+                display: flex !important;
+                justify-content: center;
+                align-items: center;
+                gap: 2rem;
+            }
         }
 
-        &__list {
-            border: 1px solid red;
+        .start-up {
             min-height: calc(100vh - 6.875rem);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            &__icon {
+                display: inline-block;
+
+                path:nth-child(-n + 2) {
+                    fill: transparent;
+                }
+                path:nth-child(n + 3) {
+                    fill: #5EEAD4;
+                }
+
+            }
         }
     }
 }
