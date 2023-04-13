@@ -8,12 +8,14 @@ import { ButtonModule } from 'primeng/button';
 import { RippleModule } from 'primeng/ripple';
 import { PanelModule } from 'primeng/panel';
 import { MenuModule } from 'primeng/menu';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [HomePageComponent],
   imports: [
     CommonModule,
     HomeRoutingModule,
+    TranslateModule,
     AngularSvgIconModule,
     ButtonModule,
     RippleModule,
