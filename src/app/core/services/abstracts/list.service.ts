@@ -9,5 +9,7 @@ export abstract class ListService {
 
   abstract get(id: string): List | undefined;
 
-  abstract remove(id: string): void;
+  abstract update(id: string): boolean;
+
+  abstract remove(id: string): List | undefined;
 }

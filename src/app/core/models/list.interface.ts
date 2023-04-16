@@ -1,8 +1,16 @@
-type ItemListState = 'pending' | 'completed';
+enum ItemStates {
+  PENDING = 'pending',
+  COMPLETED = 'completed',
+}
 
-type ListState = 'pending' | 'completed';
+enum ListItemStates {
+  PENDING = 'pending',
+  COMPLETED = 'completed',
+}
 
-type Otra = ListState | 'ALGO';
+type ItemListState = ItemStates.PENDING | ItemStates.COMPLETED;
+
+type ListState = ListItemStates.PENDING | ListItemStates.COMPLETED;
 
 export interface ItemList {
   description: string;
