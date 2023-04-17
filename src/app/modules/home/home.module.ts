@@ -1,14 +1,15 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 
-import { HomeRoutingModule } from './home-routing.module';
-import { HomePageComponent } from './pages/home-page/home-page.component';
+import { TranslateModule } from '@ngx-translate/core';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { ButtonModule } from 'primeng/button';
-import { RippleModule } from 'primeng/ripple';
-import { PanelModule } from 'primeng/panel';
 import { MenuModule } from 'primeng/menu';
-import { TranslateModule } from '@ngx-translate/core';
+import { PanelModule } from 'primeng/panel';
+import { RippleModule } from 'primeng/ripple';
+import { HomeRoutingModule } from './home-routing.module';
+import { HomePageComponent } from './pages/home-page/home-page.component';
+import { ModalsModule } from 'src/app/shared/components/modals/modals.module';
 
 @NgModule({
   declarations: [HomePageComponent],
@@ -21,6 +22,7 @@ import { TranslateModule } from '@ngx-translate/core';
     RippleModule,
     PanelModule,
     MenuModule,
+    ModalsModule,
   ],
 })
 export class HomeModule {}

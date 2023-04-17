@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
+import { ModalService } from 'src/app/shared/components/modals/services/modal.service';
 
 @Component({
   selector: 'app-home-page',
@@ -9,7 +10,7 @@ import { MenuItem } from 'primeng/api';
 export class HomePageComponent implements OnInit {
   items: MenuItem[];
 
-  constructor() {}
+  constructor(private modalService: ModalService) {}
 
   ngOnInit(): void {
     this.items = [
@@ -48,5 +49,9 @@ export class HomePageComponent implements OnInit {
         ],
       },
     ];
+  }
+
+  show() {
+    this.modalService.show();
   }
 }
