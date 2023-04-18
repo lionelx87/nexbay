@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { ModalService } from 'src/app/shared/components/modals/services/modal.service';
+import { Modals } from 'src/app/shared/components/modals/types/modals.types';
 
 @Component({
   selector: 'app-home-page',
@@ -52,6 +53,9 @@ export class HomePageComponent implements OnInit {
   }
 
   show() {
-    this.modalService.show();
+    this.modalService.show({
+      component: Modals.CREATE_LIST,
+      title: 'Nueva Lista',
+    });
   }
 }
