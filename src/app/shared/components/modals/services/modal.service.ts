@@ -12,7 +12,7 @@ export class ModalService {
   show(modalConfig: ModalConfig) {
     const ref = this.dialogService.open(modalConfig.component, {
       header: modalConfig.title,
-      width: '50%',
+      styleClass: 'modal',
     });
   }
 }
