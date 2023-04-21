@@ -1,1 +1,20 @@
-<p>create-list-modal works!</p>
+<div class="create-list">
+  <input type="text" class="w-full" pInputText autofocus [(ngModel)]="list" />
+  <div class="flex justify-content-center mt-5 gap-6 mx-1">
+    <button
+      pButton
+      pRipple
+      type="button"
+      label="Cancelar"
+      class="p-button-info flex-1"
+      (click)="close()"></button>
+    <button
+      pButton
+      pRipple
+      type="button"
+      label="Aceptar"
+      class="flex-1"
+      [disabled]="emptyList"
+      ></button>
+  </div>
+</div>
