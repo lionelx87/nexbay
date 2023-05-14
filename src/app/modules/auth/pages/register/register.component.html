@@ -1,1 +1,37 @@
-<p>register works!</p>
+<div class="register-page">
+    <p-card class="register-box">
+        <ng-template pTemplate="header">
+            register
+        </ng-template>
+        <div class="register-box__content flex flex-column">
+            <span class="p-float-label">
+                <input id="float-input" type="text" class="w-full" pInputText> 
+                <label for="float-input">Fullname</label>
+            </span>
+            <span class="p-float-label">
+                <input id="float-input" type="text" class="w-full" pInputText> 
+                <label for="float-input">Username</label>
+            </span>
+            <span class="p-float-label">
+                <input id="float-input" type="password" class="w-full" pInputText> 
+                <label for="float-input">Password</label>
+            </span>
+            <span class="p-float-label">
+                <input id="float-input" type="password" class="w-full" pInputText> 
+                <label for="float-input">Confirm Password</label>
+            </span>
+            <button
+                pButton
+                pRipple
+                type="button"
+                label="register"
+                class="flex-1"
+            ></button>
+        </div>
+        <ng-template pTemplate="footer">
+            <a routerLink="/auth/login">
+                Iniciar sesión
+            </a>
+        </ng-template>
+    </p-card>
+</div>
