@@ -1,28 +1,28 @@
 <div class="login-page">
     <p-card class="login-box">
         <ng-template pTemplate="header">
-            Login
+            {{ 'auth.login.title' | translate }}
         </ng-template>
         <div class="login-box__content flex flex-column">
             <span class="p-float-label">
                 <input id="float-input" type="text" class="w-full" pInputText> 
-                <label for="float-input">Username</label>
+                <label for="float-input">{{ 'auth.login.username' | translate }}</label>
             </span>
             <span class="p-float-label">
                 <input id="float-input" type="password" class="w-full" pInputText> 
-                <label for="float-input">Password</label>
+                <label for="float-input">{{ 'auth.login.password' | translate }}</label>
             </span>
             <button
                 pButton
                 pRipple
                 type="button"
-                label="Login"
+                label="{{ 'auth.login.action' | translate }}"
                 class="flex-1"
             ></button>
         </div>
         <ng-template pTemplate="footer">
             <a routerLink="/auth/register">
-                Crear Cuenta
+                {{ 'auth.login.toRegister' | translate }}
             </a>
         </ng-template>
     </p-card>

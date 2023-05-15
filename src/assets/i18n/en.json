@@ -1,9 +1,23 @@
 {
-    "home": {
-        "suggestions": {
-            "moreSuggestions": "Suggestions",
-            "recycle": "Recycle"
+    "auth": {
+        "login": {
+            "title": "Login",
+            "username": "Username",
+            "password": "Password",
+            "action": "Login",
+            "toRegister": "Create Account"
         },
+        "register": {
+            "title": "Register",
+            "fullname": "Fullname",
+            "username": "Username",
+            "password": "Password",
+            "confirmPassword": "Confirm Password",
+            "action": "Register",
+            "toLogin": "Log in"
+        }
+    },
+    "home": {
         "startUp": {
             "title": "Create List"
         }

@@ -1,9 +1,23 @@
 {
-    "home": {
-        "suggestions": {
-            "moreSuggestions": "Sugeridas",
-            "recycle": "Papelera"
+    "auth": {
+        "login": {
+            "title": "Acceso",
+            "username": "Usuario",
+            "password": "Contraseña",
+            "action": "Acceder",
+            "toRegister": "Crear Cuenta"
         },
+        "register": {
+            "title": "Regístrese",
+            "fullname": "Nombre Completo",
+            "username": "Usuario",
+            "password": "Contraseña",
+            "confirmPassword": "Confirme Contraseña",
+            "action": "Registrarme",
+            "toLogin": "Iniciar Sesión"
+        }
+    },
+    "home": {
         "startUp": {
             "title": "Crear Lista"
         }
