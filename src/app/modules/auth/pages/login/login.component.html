@@ -10,7 +10,6 @@
       <span class="p-float-label">
         <input
           formControlName="username"
-          id="float-input"
           type="text"
           class="w-full"
           pInputText />
@@ -19,7 +18,6 @@
       <span class="p-float-label">
         <input
           formControlName="password"
-          id="float-input"
           type="password"
           class="w-full"
           pInputText />
@@ -29,6 +27,7 @@
         pButton
         pRipple
         type="submit"
+        [disabled]="formLogin.invalid"
         label="{{ 'auth.login.action' | translate }}"
         class="flex-1"></button>
     </form>
