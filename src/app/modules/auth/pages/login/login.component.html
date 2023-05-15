@@ -1,29 +1,41 @@
 <div class="login-page">
-    <p-card class="login-box">
-        <ng-template pTemplate="header">
-            {{ 'auth.login.title' | translate }}
-        </ng-template>
-        <div class="login-box__content flex flex-column">
-            <span class="p-float-label">
-                <input id="float-input" type="text" class="w-full" pInputText> 
-                <label for="float-input">{{ 'auth.login.username' | translate }}</label>
-            </span>
-            <span class="p-float-label">
-                <input id="float-input" type="password" class="w-full" pInputText> 
-                <label for="float-input">{{ 'auth.login.password' | translate }}</label>
-            </span>
-            <button
-                pButton
-                pRipple
-                type="button"
-                label="{{ 'auth.login.action' | translate }}"
-                class="flex-1"
-            ></button>
-        </div>
-        <ng-template pTemplate="footer">
-            <a routerLink="/auth/register">
-                {{ 'auth.login.toRegister' | translate }}
-            </a>
-        </ng-template>
-    </p-card>
+  <p-card class="login-box">
+    <ng-template pTemplate="header">
+      {{ 'auth.login.title' | translate }}
+    </ng-template>
+    <form
+      [formGroup]="formLogin"
+      (ngSubmit)="login()"
+      class="login-box__content flex flex-column">
+      <span class="p-float-label">
+        <input
+          formControlName="username"
+          id="float-input"
+          type="text"
+          class="w-full"
+          pInputText />
+        <label for="float-input">{{ 'auth.login.username' | translate }}</label>
+      </span>
+      <span class="p-float-label">
+        <input
+          formControlName="password"
+          id="float-input"
+          type="password"
+          class="w-full"
+          pInputText />
+        <label for="float-input">{{ 'auth.login.password' | translate }}</label>
+      </span>
+      <button
+        pButton
+        pRipple
+        type="submit"
+        label="{{ 'auth.login.action' | translate }}"
+        class="flex-1"></button>
+    </form>
+    <ng-template pTemplate="footer">
+      <a routerLink="/auth/register">
+        {{ 'auth.login.toRegister' | translate }}
+      </a>
+    </ng-template>
+  </p-card>
 </div>
