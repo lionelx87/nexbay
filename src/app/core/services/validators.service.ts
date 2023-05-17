@@ -14,12 +14,18 @@ export class ValidatorsService {
       const passwordValue = formGroup.get(password)?.value;
       const confirmPasswordValue = formGroup.get(confirmPassword)?.value;
       if (passwordValue != confirmPasswordValue) {
-        formGroup.get(confirmPassword)?.setErrors({ notEqual: true });
+        formGroup
+          .get(confirmPassword)
+          ?.setErrors(
+            formGroup.get(confirmPassword)?.errors || { notEqual: true }
+          );
         return {
           notEqual: true,
         };
       }
-      formGroup.get(confirmPassword)?.setErrors(null);
+      formGroup
+        .get(confirmPassword)
+        ?.setErrors(formGroup.get(confirmPassword)?.errors || null);
       return null;
     };
   }
