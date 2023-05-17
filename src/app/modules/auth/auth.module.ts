@@ -11,6 +11,7 @@ import { RippleModule } from 'primeng/ripple';
 import { AuthRoutingModule } from './auth-routing.module';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
+import { FocusDirectiveModule } from 'src/app/core/directives/focus/focus-directive.module';
 
 @NgModule({
   declarations: [LoginComponent, RegisterComponent],
@@ -23,6 +24,7 @@ import { RegisterComponent } from './pages/register/register.component';
     ButtonModule,
     RippleModule,
     RouterModule,
+    FocusDirectiveModule,
     ReactiveFormsModule
   ],
 })
