@@ -7,23 +7,31 @@
       [formGroup]="formLogin"
       (ngSubmit)="login()"
       class="login-box__content flex flex-column">
-      <span class="p-float-label">
-        <input
-          formControlName="username"
-          type="text"
-          class="w-full"
-          appFocus
-          pInputText />
-        <label>{{ 'auth.login.username' | translate }}</label>
-      </span>
-      <span class="p-float-label">
-        <input
-          formControlName="password"
-          type="password"
-          class="w-full"
-          pInputText />
-        <label>{{ 'auth.login.password' | translate }}</label>
-      </span>
+      <div class="p-field">
+        <span class="p-float-label">
+          <input
+            formControlName="username"
+            type="text"
+            class="w-full"
+            appShowErrorMessage
+            appFocus
+            pInputText />
+          <label>{{ 'auth.login.username' | translate }}</label>
+        </span>
+        <!-- <small class="p-error">Username is not available.</small> -->
+      </div>
+      <div class="p-field">
+        <span class="p-float-label">
+          <input
+            formControlName="password"
+            type="password"
+            class="w-full"
+            appShowErrorMessage
+            pInputText />
+          <label>{{ 'auth.login.password' | translate }}</label>
+        </span>
+        <!-- <small class="p-error">Username is not available.</small> -->
+      </div>
       <button
         pButton
         pRipple
