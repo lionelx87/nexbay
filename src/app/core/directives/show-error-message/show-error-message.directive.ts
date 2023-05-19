@@ -23,18 +23,28 @@ export class ShowErrorMessageDirective implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    console.log('S: ', this.elementRef.nativeElement.closest('.p-field'));
+    this.ngControl.valueChanges?.subscribe(data => {
+      this.ngControl.errors
+        ? this.showErrorMessage('error')
+        : this.removeErrorMessage();
+    });
+  }
+
+  private showErrorMessage(message: string) {
     const parent = this.elementRef.nativeElement.closest('.p-field');
     const div = this.renderer.createElement('small');
-    const text = this.renderer.createText('Probandoo');
+    const text = this.renderer.createText(message);
     this.renderer.appendChild(div, text);
-    this.renderer.addClass(div, 'p-error');
-    this.renderer.addClass(div, 'block');
+    this.renderer.setAttribute(div, 'class', 'p-error block');
     this.renderer.appendChild(parent, div);
     this.renderer.setStyle(div, 'text-align', 'end');
+  }
 
-    this.ngControl.valueChanges
-      ?.pipe(filter(data => !!this.ngControl?.errors))
-      .subscribe(data => console.log('DATA: ', this.ngControl));
+  private removeErrorMessage() {
+    const parent = this.elementRef.nativeElement.closest('.p-field');
+    const child = parent?.querySelector('small');
+    if (parent && child) {
+      this.renderer.removeChild(parent, child);
+    }
   }
 }
