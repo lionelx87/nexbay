@@ -8,6 +8,7 @@ import {
   Self,
 } from '@angular/core';
 import { NgControl } from '@angular/forms';
+import { TranslateService } from '@ngx-translate/core';
 import { filter } from 'rxjs';
 
 @Directive({
@@ -19,25 +20,32 @@ export class ShowErrorMessageDirective implements OnInit {
   constructor(
     @Optional() @Self() public ngControl: NgControl,
     private elementRef: ElementRef<HTMLInputElement>,
-    private renderer: Renderer2
+    private renderer: Renderer2,
+    private translateService: TranslateService
   ) {}
 
   ngOnInit(): void {
     this.ngControl.valueChanges?.subscribe(data => {
       this.ngControl.errors
-        ? this.showErrorMessage('error')
+        ? this.showErrorMessage(Object.keys(this.ngControl.errors)[0])
         : this.removeErrorMessage();
     });
   }
 
   private showErrorMessage(message: string) {
-    const parent = this.elementRef.nativeElement.closest('.p-field');
-    const div = this.renderer.createElement('small');
-    const text = this.renderer.createText(message);
-    this.renderer.appendChild(div, text);
-    this.renderer.setAttribute(div, 'class', 'p-error block');
-    this.renderer.appendChild(parent, div);
-    this.renderer.setStyle(div, 'text-align', 'end');
+    console.log(message);
+    this.translateService
+      .get('forms.errors.' + message)
+      .subscribe(translate => {
+        this.removeErrorMessage();
+        const parent = this.elementRef.nativeElement.closest('.p-field');
+        const div = this.renderer.createElement('small');
+        const text = this.renderer.createText(translate);
+        this.renderer.appendChild(div, text);
+        this.renderer.setAttribute(div, 'class', 'p-error block mt-1');
+        this.renderer.appendChild(parent, div);
+        this.renderer.setStyle(div, 'text-align', 'end');
+      });
   }
 
   private removeErrorMessage() {

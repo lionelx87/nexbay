@@ -21,5 +21,11 @@
         "startUp": {
             "title": "Create List"
         }
+    },
+    "forms": {
+        "errors": {
+            "required": "required",
+            "pattern": "must be in mail format"
+        }
     }
 }

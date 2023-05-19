@@ -8,11 +8,11 @@ import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
 import { InputTextModule } from 'primeng/inputtext';
 import { RippleModule } from 'primeng/ripple';
-import { FocusDirectiveModule } from 'src/app/core/directives/focus/focus-directive.module';
-import { ShowErrorMessageModule } from 'src/app/core/directives/show-error-message/show-error-message.module';
 import { AuthRoutingModule } from './auth-routing.module';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
+import { FocusDirectiveModule } from 'src/app/shared/directives/focus/focus-directive.module';
+import { ShowErrorMessageModule } from 'src/app/shared/directives/show-error-message/show-error-message.module';
 
 @NgModule({
   declarations: [LoginComponent, RegisterComponent],

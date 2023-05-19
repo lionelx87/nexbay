@@ -7,22 +7,51 @@
       [formGroup]="formRegister"
       (ngSubmit)="register()"
       class="register-box__content flex flex-column">
-      <span class="p-float-label">
-        <input formControlName="fullname" type="text" class="w-full" appFocus pInputText />
-        <label>{{ 'auth.register.fullname' | translate }}</label>
-      </span>
-      <span class="p-float-label">
-        <input formControlName="username" type="text" class="w-full" pInputText />
-        <label>{{ 'auth.register.username' | translate }}</label>
-      </span>
-      <span class="p-float-label">
-        <input formControlName="password" type="password" class="w-full" pInputText />
-        <label>{{ 'auth.register.password' | translate }}</label>
-      </span>
-      <span class="p-float-label">
-        <input formControlName="confirmPassword" type="password" class="w-full" pInputText />
-        <label>{{ 'auth.register.confirmPassword' | translate }}</label>
-      </span>
+      <div class="p-field">
+        <span class="p-float-label">
+          <input
+            formControlName="fullname"
+            type="text"
+            class="w-full"
+            appFocus
+            appShowErrorMessage
+            pInputText />
+          <label>{{ 'auth.register.fullname' | translate }}</label>
+        </span>
+      </div>
+      <div class="p-field">
+        <span class="p-float-label">
+          <input
+            formControlName="username"
+            type="text"
+            class="w-full"
+            appShowErrorMessage
+            pInputText />
+          <label>{{ 'auth.register.username' | translate }}</label>
+        </span>
+      </div>
+      <div class="p-field">
+        <span class="p-float-label">
+          <input
+            formControlName="password"
+            type="password"
+            class="w-full"
+            appShowErrorMessage
+            pInputText />
+          <label>{{ 'auth.register.password' | translate }}</label>
+        </span>
+      </div>
+      <div class="p-field">
+        <span class="p-float-label">
+          <input
+            formControlName="confirmPassword"
+            type="password"
+            class="w-full"
+            appShowErrorMessage
+            pInputText />
+          <label>{{ 'auth.register.confirmPassword' | translate }}</label>
+        </span>
+      </div>
       <button
         pButton
         pRipple
