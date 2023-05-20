@@ -9,7 +9,7 @@ import {
 } from '@angular/core';
 import { NgControl } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
-import { filter } from 'rxjs';
+import { delay } from 'rxjs';
 
 @Directive({
   selector: 'input[appShowErrorMessage]',
@@ -25,15 +25,16 @@ export class ShowErrorMessageDirective implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.ngControl.valueChanges?.subscribe(data => {
-      this.ngControl.errors
-        ? this.showErrorMessage(Object.keys(this.ngControl.errors)[0])
-        : this.removeErrorMessage();
-    });
+    this.ngControl.valueChanges
+      ?.pipe(delay(0))
+      .subscribe(_ =>
+        this.ngControl.errors
+          ? this.showErrorMessage(Object.keys(this.ngControl.errors)[0])
+          : this.removeErrorMessage()
+      );
   }
 
   private showErrorMessage(message: string) {
-    console.log(message);
     this.translateService
       .get('forms.errors.' + message)
       .subscribe(translate => {

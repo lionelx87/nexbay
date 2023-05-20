@@ -25,7 +25,8 @@
     "forms": {
         "errors": {
             "required": "required",
-            "pattern": "must be in mail format"
+            "pattern": "must be a valid email address",
+            "notEqual": "must match the password"
         }
     }
 }
