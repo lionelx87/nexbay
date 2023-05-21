@@ -5,6 +5,7 @@ import {
   updateProfile,
 } from '@angular/fire/auth';
 import { getAuth, UserCredential } from '@firebase/auth';
+import { Observable, catchError, from, map, of, switchMap, tap } from 'rxjs';
 import { RegisterUser } from 'src/app/core/models/user.interface';
 
 @Injectable({
@@ -15,15 +16,17 @@ export class AuthService {
     this.auth = getAuth();
   }
 
-  register(registerUser: RegisterUser) {
+  register(registerUser: RegisterUser): Observable<boolean> {
     const { fullname: displayName, username, password } = registerUser;
-    createUserWithEmailAndPassword(this.auth, username, password).then(
-      (userCredential: UserCredential) => {
-        const user = userCredential.user;
-        return updateProfile(user, { displayName }).then(() =>
-          console.log(userCredential)
-        );
-      }
+    const registeredUser$ = from(
+      createUserWithEmailAndPassword(this.auth, username, password)
+    );
+    return registeredUser$.pipe(
+      switchMap((userCredential: UserCredential) => {
+        const { user } = userCredential;
+        return from(updateProfile(user, { displayName })).pipe(map(() => true));
+      }),
+      catchError(err => of(false))
     );
   }
 }
