@@ -113,6 +113,16 @@
               "src/**/*.html"
             ]
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "youlist:build:production",
+            "firebaseProject": "youlist-589b5",
+            "firebaseHostingSite": "youlist-589b5"
+          }
         }
       }
     }

@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "youlist-589b5": {
+      "hosting": {
+        "youlist": [
+          "youlist-589b5"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "youlist-589b5"
+  }
+}

@@ -13,6 +13,11 @@ import { AngularSvgIconModule } from 'angular-svg-icon';
 import { PrimeNGConfig } from 'primeng/api';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideAnalytics,getAnalytics,ScreenTrackingService,UserTrackingService } from '@angular/fire/analytics';
+import { provideAuth,getAuth } from '@angular/fire/auth';
+import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 
 const initializeAppFactory =
   (primeConfig: PrimeNGConfig, translate: TranslateService) => () => {
@@ -41,6 +46,10 @@ export function HttpLoaderFactory(http: HttpClient) {
         deps: [HttpClient],
       },
     }),
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideAnalytics(() => getAnalytics()),
+    provideAuth(() => getAuth()),
+    provideFirestore(() => getFirestore()),
   ],
   providers: [
     {
@@ -49,6 +58,7 @@ export function HttpLoaderFactory(http: HttpClient) {
       deps: [PrimeNGConfig, TranslateService],
       multi: true,
     },
+    ScreenTrackingService,UserTrackingService,
   ],
   bootstrap: [AppComponent],
 })
