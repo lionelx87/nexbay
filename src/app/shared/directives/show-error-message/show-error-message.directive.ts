@@ -7,7 +7,7 @@ import {
   Renderer2,
   Self,
 } from '@angular/core';
-import { NgControl } from '@angular/forms';
+import { FormGroupDirective, NgControl } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import { delay } from 'rxjs';
 
@@ -19,6 +19,7 @@ export class ShowErrorMessageDirective implements OnInit {
 
   constructor(
     @Optional() @Self() public ngControl: NgControl,
+    private formGroupDirective: FormGroupDirective,
     private elementRef: ElementRef<HTMLInputElement>,
     private renderer: Renderer2,
     private translateService: TranslateService
@@ -27,10 +28,15 @@ export class ShowErrorMessageDirective implements OnInit {
   ngOnInit(): void {
     this.ngControl.valueChanges
       ?.pipe(delay(0))
-      .subscribe(_ =>
+      .subscribe(_ => {
         this.ngControl.errors
           ? this.showErrorMessage(Object.keys(this.ngControl.errors)[0])
-          : this.removeErrorMessage()
+          : this.removeErrorMessage();
+        const { notEqual }: any = this.formGroupDirective.form.controls['confirmPassword']?.errors || {};
+        if(this.ngControl.name === 'password' && notEqual) {
+          this.formGroupDirective.form.controls['confirmPassword'].updateValueAndValidity();
+        }
+      }
       );
   }
 
