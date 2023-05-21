@@ -13,7 +13,6 @@ import { AngularSvgIconModule } from 'angular-svg-icon';
 import { PrimeNGConfig } from 'primeng/api';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { MenuModule } from './shared/components/layouts/menubar/menubar.module';
 
 const initializeAppFactory =
   (primeConfig: PrimeNGConfig, translate: TranslateService) => () => {
@@ -42,7 +41,6 @@ export function HttpLoaderFactory(http: HttpClient) {
         deps: [HttpClient],
       },
     }),
-    MenuModule,
   ],
   providers: [
     {

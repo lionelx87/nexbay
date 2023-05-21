@@ -1,0 +1,69 @@
+<div class="register-page">
+  <p-card class="register-box">
+    <ng-template pTemplate="header">
+      {{ 'auth.register.title' | translate }}
+    </ng-template>
+    <form
+      [formGroup]="formRegister"
+      (ngSubmit)="register()"
+      class="register-box__content flex flex-column">
+      <div class="p-field">
+        <span class="p-float-label">
+          <input
+            formControlName="fullname"
+            type="text"
+            class="w-full"
+            appFocus
+            appShowErrorMessage
+            pInputText />
+          <label>{{ 'auth.register.fullname' | translate }}</label>
+        </span>
+      </div>
+      <div class="p-field">
+        <span class="p-float-label">
+          <input
+            formControlName="username"
+            type="text"
+            class="w-full"
+            appShowErrorMessage
+            pInputText />
+          <label>{{ 'auth.register.username' | translate }}</label>
+        </span>
+      </div>
+      <div class="p-field">
+        <span class="p-float-label">
+          <input
+            formControlName="password"
+            type="password"
+            class="w-full"
+            appShowErrorMessage
+            pInputText />
+          <label>{{ 'auth.register.password' | translate }}</label>
+        </span>
+      </div>
+      <div class="p-field">
+        <span class="p-float-label">
+          <input
+            formControlName="confirmPassword"
+            type="password"
+            class="w-full"
+            appShowErrorMessage
+            pInputText />
+          <label>{{ 'auth.register.confirmPassword' | translate }}</label>
+        </span>
+      </div>
+      <button
+        pButton
+        pRipple
+        type="submit"
+        [disabled]="formRegister.invalid"
+        label="{{ 'auth.register.action' | translate }}"
+        class="flex-1"></button>
+    </form>
+    <ng-template pTemplate="footer">
+      <a routerLink="/auth/login">
+        {{ 'auth.register.toLogin' | translate }}
+      </a>
+    </ng-template>
+  </p-card>
+</div>

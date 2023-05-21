@@ -1,0 +1,47 @@
+<div class="login-page">
+  <p-card class="login-box">
+    <ng-template pTemplate="header">
+      {{ 'auth.login.title' | translate }}
+    </ng-template>
+    <form
+      [formGroup]="formLogin"
+      (ngSubmit)="login()"
+      class="login-box__content flex flex-column">
+      <div class="p-field">
+        <span class="p-float-label">
+          <input
+            formControlName="username"
+            type="text"
+            class="w-full"
+            appShowErrorMessage
+            appFocus
+            pInputText />
+          <label>{{ 'auth.login.username' | translate }}</label>
+        </span>
+      </div>
+      <div class="p-field">
+        <span class="p-float-label">
+          <input
+            formControlName="password"
+            type="password"
+            class="w-full"
+            appShowErrorMessage
+            pInputText />
+          <label>{{ 'auth.login.password' | translate }}</label>
+        </span>
+      </div>
+      <button
+        pButton
+        pRipple
+        type="submit"
+        [disabled]="formLogin.invalid"
+        label="{{ 'auth.login.action' | translate }}"
+        class="flex-1"></button>
+    </form>
+    <ng-template pTemplate="footer">
+      <a routerLink="/auth/register">
+        {{ 'auth.login.toRegister' | translate }}
+      </a>
+    </ng-template>
+  </p-card>
+</div>

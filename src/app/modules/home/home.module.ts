@@ -8,6 +8,7 @@ import { RippleModule } from 'primeng/ripple';
 import { ModalsModule } from 'src/app/shared/components/modals/modals.module';
 import { HomeRoutingModule } from './home-routing.module';
 import { HomePageComponent } from './pages/home-page/home-page.component';
+import { MenuModule } from 'src/app/shared/components/layouts/menubar/menubar.module';
 
 @NgModule({
   declarations: [HomePageComponent],
@@ -19,6 +20,7 @@ import { HomePageComponent } from './pages/home-page/home-page.component';
     ButtonModule,
     RippleModule,
     ModalsModule,
+    MenuModule,
   ],
 })
 export class HomeModule {}
