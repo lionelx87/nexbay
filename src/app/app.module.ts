@@ -13,6 +13,21 @@ import { AngularSvgIconModule } from 'angular-svg-icon';
 import { PrimeNGConfig } from 'primeng/api';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import {
+  provideAnalytics,
+  getAnalytics,
+  ScreenTrackingService,
+  UserTrackingService,
+} from '@angular/fire/analytics';
+import { provideAuth, getAuth } from '@angular/fire/auth';
+import { provideFirestore, getFirestore } from '@angular/fire/firestore';
+import { StoreModule } from '@ngrx/store';
+import { appReducers } from './store/app.reducer';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { EffectsModule } from '@ngrx/effects';
+import { AuthEffects } from './store/auth/auth.effects';
 
 const initializeAppFactory =
   (primeConfig: PrimeNGConfig, translate: TranslateService) => () => {
@@ -41,6 +56,17 @@ export function HttpLoaderFactory(http: HttpClient) {
         deps: [HttpClient],
       },
     }),
+    StoreModule.forRoot(appReducers),
+    EffectsModule.forRoot([AuthEffects]),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25, // Retains last 25 states
+      logOnly: environment.production, // Restrict extension to log-only mode
+      autoPause: true, // Pauses recording actions and state changes when the extension window is not open
+    }),
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideAnalytics(() => getAnalytics()),
+    provideAuth(() => getAuth()),
+    provideFirestore(() => getFirestore()),
   ],
   providers: [
     {
@@ -49,6 +75,8 @@ export function HttpLoaderFactory(http: HttpClient) {
       deps: [PrimeNGConfig, TranslateService],
       multi: true,
     },
+    ScreenTrackingService,
+    UserTrackingService,
   ],
   bootstrap: [AppComponent],
 })
