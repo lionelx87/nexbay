@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Store } from '@ngrx/store';
 import { ValidatorsService } from 'src/app/core/services/validators.service';
-import { AuthService } from '../../services/auth.service';
+import { AppState } from 'src/app/store/app.reducer';
+import { registerUser } from 'src/app/store/auth/auth.actions';
 
 @Component({
   selector: 'app-register',
@@ -14,7 +16,7 @@ export class RegisterComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private validatorsService: ValidatorsService,
-    private authService: AuthService
+    private store: Store<AppState>
   ) {}
 
   ngOnInit(): void {
@@ -44,10 +46,7 @@ export class RegisterComponent implements OnInit {
 
   register() {
     if (this.formRegister.valid) {
-      console.log(this.formRegister.value);
-      this.authService
-        .register(this.formRegister.value)
-        .subscribe(data => console.log('DATA: ', data));
+      this.store.dispatch(registerUser({ user: this.formRegister.value }));
     }
   }
 }

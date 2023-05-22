@@ -26,6 +26,8 @@ import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { StoreModule } from '@ngrx/store';
 import { appReducers } from './store/app.reducer';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { EffectsModule } from '@ngrx/effects';
+import { AuthEffects } from './store/auth/auth.effects';
 
 const initializeAppFactory =
   (primeConfig: PrimeNGConfig, translate: TranslateService) => () => {
@@ -55,6 +57,7 @@ export function HttpLoaderFactory(http: HttpClient) {
       },
     }),
     StoreModule.forRoot(appReducers),
+    EffectsModule.forRoot([AuthEffects]),
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states
       logOnly: environment.production, // Restrict extension to log-only mode
