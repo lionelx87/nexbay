@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
+import { TranslateService } from '@ngx-translate/core';
 import { catchError, finalize, map, mergeMap, of, switchMap, tap } from 'rxjs';
+import { CustomMessageType } from 'src/app/core/models/message.interface';
 import { AuthService } from 'src/app/modules/auth/services/auth.service';
 import { CustomMessageService } from 'src/app/shared/services/custom-message.service';
 import { AppState } from '../app.reducer';
@@ -11,7 +13,6 @@ import {
   registerUserFail,
   registerUserSuccess,
 } from './auth.actions';
-import { TranslateService } from '@ngx-translate/core';
 
 @Injectable({
   providedIn: 'root',
@@ -34,7 +35,7 @@ export class AuthEffects {
           map(success =>
             success
               ? registerUserSuccess()
-              : registerUserFail({ error: { code: '' } })
+              : registerUserFail({ error: { code: 'generic' } })
           ),
           catchError(err => {
             return of(registerUserFail({ error: err.code }));
@@ -52,7 +53,11 @@ export class AuthEffects {
         switchMap(action =>
           this.translateService.get('auth.form.errors.' + action.error)
         ),
-        tap(translate => this.customMessageService.showMessage(translate))
+        tap(translate => this.customMessageService.showMessage({
+          type: CustomMessageType.SEVERITY_ERROR,
+          title: 'Error',
+          content: translate
+        }))
       ),
     { dispatch: false }
   );

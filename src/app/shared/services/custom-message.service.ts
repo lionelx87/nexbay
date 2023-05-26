@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
 import { MessageService } from 'primeng/api';
+import {
+  CustomMessage
+} from 'src/app/core/models/message.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -7,11 +10,11 @@ import { MessageService } from 'primeng/api';
 export class CustomMessageService {
   constructor(private messageService: MessageService) {}
 
-  showMessage(details: string) {
+  showMessage({ type, title, content }: CustomMessage) {
     this.messageService.add({
-      severity: 'error',
-      summary: 'Error',
-      detail: details,
+      severity: type,
+      summary: title,
+      detail: content,
     });
   }
 }

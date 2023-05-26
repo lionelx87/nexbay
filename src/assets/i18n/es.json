@@ -22,7 +22,8 @@
                 "pattern": "debe ser un email válido",
                 "notEqual": "debe coincidir con la contraseña",
                 "minlength": "debe contener mínimo 6 caracteres",
-                "auth/email-already-in-use": "Correo ya registrado"
+                "auth/email-already-in-use": "Correo ya registrado",
+                "generic": "ha ocurrido un error"
             }
         }
     },
