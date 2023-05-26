@@ -15,18 +15,19 @@
             "confirmPassword": "Confirm Password",
             "action": "Register",
             "toLogin": "Log in"
+        },
+        "form": {
+            "errors": {
+                "required": "required",
+                "pattern": "must be a valid email address",
+                "notEqual": "must match the password",
+                "minlength": "must contain at least 6 characters"
+            }
         }
     },
     "home": {
         "startUp": {
             "title": "Create List"
-        }
-    },
-    "forms": {
-        "errors": {
-            "required": "required",
-            "pattern": "must be a valid email address",
-            "notEqual": "must match the password"
         }
     }
 }

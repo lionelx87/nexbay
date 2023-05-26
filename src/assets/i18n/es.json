@@ -15,18 +15,19 @@
             "confirmPassword": "Confirme Contraseña",
             "action": "Registrarme",
             "toLogin": "Iniciar Sesión"
+        },
+        "form": {
+            "errors": {
+                "required": "requerido",
+                "pattern": "debe ser un email válido",
+                "notEqual": "debe coincidir con la contraseña",
+                "minlength": "debe contener mínimo 6 caracteres"
+            }
         }
     },
     "home": {
         "startUp": {
             "title": "Crear Lista"
-        }
-    },
-    "forms": {
-        "errors": {
-            "required": "requerido",
-            "pattern": "debe ser un email válido",
-            "notEqual": "debe coincidir con la contraseña"
         }
     }
 }
