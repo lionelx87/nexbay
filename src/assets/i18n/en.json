@@ -14,7 +14,11 @@
             "password": "Password",
             "confirmPassword": "Confirm Password",
             "action": "Register",
-            "toLogin": "Log in"
+            "toLogin": "Log in",
+            "success": {
+                "title": "Register",
+                "content": "User successfully registered"
+            }
         },
         "form": {
             "errors": {

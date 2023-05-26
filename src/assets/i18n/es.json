@@ -14,7 +14,11 @@
             "password": "Contraseña",
             "confirmPassword": "Confirme Contraseña",
             "action": "Registrarme",
-            "toLogin": "Iniciar Sesión"
+            "toLogin": "Iniciar Sesión",
+            "success": {
+                "title": "Registro",
+                "content": "Usuario registrado correctamente"
+            }
         },
         "form": {
             "errors": {
