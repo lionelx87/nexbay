@@ -31,6 +31,7 @@ import { AuthEffects } from './store/auth/auth.effects';
 import { ToastModule } from 'primeng/toast';
 import { CustomMessageService } from 'src/app/shared/services/custom-message.service';
 import { MessageService } from 'primeng/api';
+import { SpinnerModule } from './shared/components/spinner/spinner.module';
 
 const initializeAppFactory =
   (primeConfig: PrimeNGConfig, translate: TranslateService) => () => {
@@ -52,6 +53,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     AppRoutingModule,
     HttpClientModule,
     ToastModule,
+    SpinnerModule,
     AngularSvgIconModule.forRoot(),
     TranslateModule.forRoot({
       loader: {
