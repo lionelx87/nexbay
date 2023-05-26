@@ -14,3 +14,7 @@ export interface LoggedUser {
   fullname: string;
   uid: string;
 }
+
+export interface FirebaseAuthError {
+  code: string;
+}

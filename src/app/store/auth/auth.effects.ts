@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
-import { catchError, finalize, map, mergeMap, of, tap } from 'rxjs';
+import { catchError, finalize, map, mergeMap, of, switchMap, tap } from 'rxjs';
 import { AuthService } from 'src/app/modules/auth/services/auth.service';
 import { CustomMessageService } from 'src/app/shared/services/custom-message.service';
 import { AppState } from '../app.reducer';
@@ -11,6 +11,7 @@ import {
   registerUserFail,
   registerUserSuccess,
 } from './auth.actions';
+import { TranslateService } from '@ngx-translate/core';
 
 @Injectable({
   providedIn: 'root',
@@ -20,7 +21,8 @@ export class AuthEffects {
     private actions$: Actions,
     private authService: AuthService,
     private customMessageService: CustomMessageService,
-    private store: Store<AppState>
+    private store: Store<AppState>,
+    private translateService: TranslateService
   ) {}
 
   registerUser$ = createEffect(() =>
@@ -30,9 +32,13 @@ export class AuthEffects {
       mergeMap(action =>
         this.authService.register(action.user).pipe(
           map(success =>
-            success ? registerUserSuccess() : registerUserFail()
+            success
+              ? registerUserSuccess()
+              : registerUserFail({ error: { code: '' } })
           ),
-          catchError(err => of(registerUserFail())),
+          catchError(err => {
+            return of(registerUserFail({ error: err.code }));
+          }),
           finalize(() => this.store.dispatch(hideLoading()))
         )
       )
@@ -43,7 +49,10 @@ export class AuthEffects {
     () =>
       this.actions$.pipe(
         ofType(registerUserFail),
-        tap(_ => this.customMessageService.showMessage())
+        switchMap(action =>
+          this.translateService.get('auth.form.errors.' + action.error)
+        ),
+        tap(translate => this.customMessageService.showMessage(translate))
       ),
     { dispatch: false }
   );

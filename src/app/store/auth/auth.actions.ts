@@ -1,5 +1,6 @@
 import { createAction, props } from '@ngrx/store';
 import {
+  FirebaseAuthError,
   LoggedUser,
   LoginUser,
   RegisterUser,
@@ -12,7 +13,10 @@ export const registerUser = createAction(
 
 export const registerUserSuccess = createAction('[User] Register User Success');
 
-export const registerUserFail = createAction('[User] Register User Fail');
+export const registerUserFail = createAction(
+  '[User] Register User Fail',
+  props<{ error: FirebaseAuthError }>()
+);
 
 export const loginUser = createAction(
   '[User] Login User',

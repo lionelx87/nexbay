@@ -21,7 +21,8 @@
                 "required": "required",
                 "pattern": "must be a valid email address",
                 "notEqual": "must match the password",
-                "minlength": "must contain at least 6 characters"
+                "minlength": "must contain at least 6 characters",
+                "auth/email-already-in-use": "email already in use"
             }
         }
     },

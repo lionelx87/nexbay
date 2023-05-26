@@ -7,11 +7,11 @@ import { MessageService } from 'primeng/api';
 export class CustomMessageService {
   constructor(private messageService: MessageService) {}
 
-  showMessage() {
+  showMessage(details: string) {
     this.messageService.add({
       severity: 'error',
       summary: 'Error',
-      detail: 'Message Content',
+      detail: details,
     });
   }
 }
