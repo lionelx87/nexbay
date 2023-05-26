@@ -28,6 +28,9 @@ import { appReducers } from './store/app.reducer';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
 import { AuthEffects } from './store/auth/auth.effects';
+import { ToastModule } from 'primeng/toast';
+import { CustomMessageService } from 'src/app/shared/services/custom-message.service';
+import { MessageService } from 'primeng/api';
 
 const initializeAppFactory =
   (primeConfig: PrimeNGConfig, translate: TranslateService) => () => {
@@ -48,6 +51,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
+    ToastModule,
     AngularSvgIconModule.forRoot(),
     TranslateModule.forRoot({
       loader: {
@@ -77,6 +81,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     },
     ScreenTrackingService,
     UserTrackingService,
+    MessageService,
+    CustomMessageService,
   ],
   bootstrap: [AppComponent],
 })

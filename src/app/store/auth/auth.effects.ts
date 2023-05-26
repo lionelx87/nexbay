@@ -1,16 +1,24 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { catchError, map, mergeMap, of } from 'rxjs';
+import { catchError, delay, map, mergeMap, of, repeat, take, tap } from 'rxjs';
 import { AuthService } from 'src/app/modules/auth/services/auth.service';
 import {
   registerUser,
   registerUserFail,
   registerUserSuccess,
 } from './auth.actions';
+import { CustomMessageService } from 'src/app/shared/services/custom-message.service';
+import { MessageService } from 'primeng/api';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class AuthEffects {
-  constructor(private actions$: Actions, private authService: AuthService) {}
+  constructor(
+    private actions$: Actions,
+    private authService: AuthService,
+    private customMessageService: CustomMessageService
+  ) {}
 
   registerUser$ = createEffect(() =>
     this.actions$.pipe(
@@ -24,5 +32,14 @@ export class AuthEffects {
         )
       )
     )
+  );
+
+  registerUserFail$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(registerUserFail),
+        tap(_ => this.customMessageService.showMessage())
+      ),
+    { dispatch: false }
   );
 }
