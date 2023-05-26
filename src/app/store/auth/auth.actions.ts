@@ -25,7 +25,10 @@ export const loginUser = createAction(
 
 export const loginUserSuccess = createAction('[User] Login User Success');
 
-export const loginUserFail = createAction('[User] Login User Fail');
+export const loginUserFail = createAction(
+  '[User] Login User Fail',
+  props<{ error: FirebaseAuthError }>()
+);
 
 export const setUser = createAction(
   '[User] Set User',

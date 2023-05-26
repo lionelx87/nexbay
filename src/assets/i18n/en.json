@@ -27,6 +27,9 @@
                 "notEqual": "must match the password",
                 "minlength": "must contain at least 6 characters",
                 "auth/email-already-in-use": "email already in use",
+                "auth/too-many-requests": "Too many requests",
+                "auth/user-not-found": "Incorrect username/password",
+                "auth/wrong-password": "Incorrect username/password",
                 "generic": "an error has occurred"
             }
         }

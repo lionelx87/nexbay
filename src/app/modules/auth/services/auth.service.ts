@@ -2,7 +2,9 @@ import { Injectable } from '@angular/core';
 import {
   Auth,
   createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
   updateProfile,
+  UserCredential,
 } from '@angular/fire/auth';
 import { getAuth } from '@firebase/auth';
 import {
@@ -16,6 +18,7 @@ import {
 } from 'rxjs';
 import {
   FirebaseAuthError,
+  LoginUser,
   RegisterUser,
 } from 'src/app/core/models/user.interface';
 
@@ -36,6 +39,13 @@ export class AuthService {
       switchMap(({ user }) =>
         from(updateProfile(user, { displayName })).pipe(map(() => true))
       ),
+      catchError((err: FirebaseAuthError) => throwError(() => err))
+    );
+  }
+
+  login(loginUser: LoginUser): Observable<UserCredential> {
+    const { username, password } = loginUser;
+    return from(signInWithEmailAndPassword(this.auth, username, password)).pipe(
       catchError((err: FirebaseAuthError) => throwError(() => err))
     );
   }

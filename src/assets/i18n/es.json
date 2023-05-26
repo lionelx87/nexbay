@@ -27,6 +27,9 @@
                 "notEqual": "debe coincidir con la contraseña",
                 "minlength": "debe contener mínimo 6 caracteres",
                 "auth/email-already-in-use": "Correo ya registrado",
+                "auth/too-many-requests": "Demasiados intentos",
+                "auth/user-not-found": "Usuario/Contraseña incorrecta",
+                "auth/wrong-password": "Usuario/Contraseña incorrecta",
                 "generic": "ha ocurrido un error"
             }
         }
