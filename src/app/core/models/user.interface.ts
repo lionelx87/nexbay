@@ -10,9 +10,15 @@ export interface LoginUser {
 }
 
 export interface LoggedUser {
-  username: string;
-  fullname: string;
+  // .user
+  username: string; // email
+  fullname: string; // displayName
   uid: string;
+  photoUrl: string;
+  //._tokenResponse:
+  expiresIn: string;
+  idToken: string;
+  refreshToken: string;
 }
 
 export interface FirebaseAuthError {

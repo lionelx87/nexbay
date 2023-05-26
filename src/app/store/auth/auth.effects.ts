@@ -18,6 +18,7 @@ import {
   registerUserFail,
   registerUserSuccess,
 } from './auth.actions';
+import { UserCredential } from '@angular/fire/auth';
 
 @Injectable({
   providedIn: 'root',
@@ -99,7 +100,7 @@ export class AuthEffects {
       tap(() => this.store.dispatch(showLoading())),
       mergeMap(action =>
         this.authService.login(action.user).pipe(
-          map(success => loginUserSuccess()),
+          map((user: UserCredential) => loginUserSuccess({ user })),
           catchError(err => {
             return of(loginUserFail({ error: err.code }));
           }),
@@ -107,6 +108,17 @@ export class AuthEffects {
         )
       )
     )
+  );
+
+  loginUserSuccess$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(loginUserSuccess),
+        tap(({ user }) => console.log(user)),
+        // setUser(user),
+        tap(_ => this.customRoutingService.go(CustomRoute.HOME))
+      ),
+    { dispatch: false }
   );
 
   loginUserFail$ = createEffect(

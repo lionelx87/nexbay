@@ -1,3 +1,4 @@
+import { UserCredential } from '@angular/fire/auth';
 import { createAction, props } from '@ngrx/store';
 import {
   FirebaseAuthError,
@@ -23,7 +24,10 @@ export const loginUser = createAction(
   props<{ user: LoginUser }>()
 );
 
-export const loginUserSuccess = createAction('[User] Login User Success');
+export const loginUserSuccess = createAction(
+  '[User] Login User Success',
+  props<{ user: UserCredential }>()
+);
 
 export const loginUserFail = createAction(
   '[User] Login User Fail',
