@@ -13,6 +13,8 @@ import {
   registerUserFail,
   registerUserSuccess,
 } from './auth.actions';
+import { CustomRoutingService } from 'src/app/core/services/custom-routing.service';
+import { CustomRoute } from 'src/app/core/models/routing.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -23,7 +25,8 @@ export class AuthEffects {
     private authService: AuthService,
     private customMessageService: CustomMessageService,
     private store: Store<AppState>,
-    private translateService: TranslateService
+    private translateService: TranslateService,
+    private customRoutingService: CustomRoutingService
   ) {}
 
   registerUser$ = createEffect(() =>
@@ -46,6 +49,22 @@ export class AuthEffects {
     )
   );
 
+  registerUserSuccess$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(registerUserSuccess),
+        tap(() => {
+          this.customRoutingService.go(CustomRoute.LOGIN);
+          this.customMessageService.showMessage({
+            type: CustomMessageType.SEVERITY_SUCCESS,
+            title: 'Registro',
+            content: 'Usuario registrado correctamente',
+          });
+        })
+      ),
+    { dispatch: false }
+  );
+
   registerUserFail$ = createEffect(
     () =>
       this.actions$.pipe(
@@ -53,11 +72,13 @@ export class AuthEffects {
         switchMap(action =>
           this.translateService.get('auth.form.errors.' + action.error)
         ),
-        tap(translate => this.customMessageService.showMessage({
-          type: CustomMessageType.SEVERITY_ERROR,
-          title: 'Error',
-          content: translate
-        }))
+        tap(translate =>
+          this.customMessageService.showMessage({
+            type: CustomMessageType.SEVERITY_ERROR,
+            title: 'Error',
+            content: translate,
+          })
+        )
       ),
     { dispatch: false }
   );
