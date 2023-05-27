@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { UserCredential } from '@angular/fire/auth';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
@@ -17,8 +18,8 @@ import {
   registerUser,
   registerUserFail,
   registerUserSuccess,
+  setUser,
 } from './auth.actions';
-import { UserCredential } from '@angular/fire/auth';
 
 @Injectable({
   providedIn: 'root',
@@ -110,15 +111,31 @@ export class AuthEffects {
     )
   );
 
-  loginUserSuccess$ = createEffect(
-    () =>
-      this.actions$.pipe(
-        ofType(loginUserSuccess),
-        tap(({ user }) => console.log(user)),
-        // setUser(user),
-        tap(_ => this.customRoutingService.go(CustomRoute.HOME))
-      ),
-    { dispatch: false }
+  loginUserSuccess$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(loginUserSuccess),
+      map(({ user }: any) => {
+        const {
+          email: username,
+          displayName: fullname,
+          uid,
+          photoUrl,
+        } = user.user;
+        const { expiresIn, idToken, refreshToken } = user._tokenResponse;
+        this.customRoutingService.go(CustomRoute.HOME);
+        return setUser({
+          user: {
+            username,
+            fullname,
+            uid,
+            photoUrl,
+            expiresIn,
+            idToken,
+            refreshToken,
+          },
+        });
+      })
+    )
   );
 
   loginUserFail$ = createEffect(
