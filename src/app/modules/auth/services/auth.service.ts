@@ -2,32 +2,47 @@ import { Injectable } from '@angular/core';
 import {
   Auth,
   createUserWithEmailAndPassword,
+  onAuthStateChanged,
   signInWithEmailAndPassword,
+  signOut,
   updateProfile,
   UserCredential,
 } from '@angular/fire/auth';
 import { getAuth } from '@firebase/auth';
-import {
-  Observable,
-  catchError,
-  from,
-  map,
-  of,
-  switchMap,
-  throwError,
-} from 'rxjs';
+import { Store } from '@ngrx/store';
+import { catchError, from, map, Observable, switchMap, throwError } from 'rxjs';
 import {
   FirebaseAuthError,
+  LoggedUser,
   LoginUser,
   RegisterUser,
 } from 'src/app/core/models/user.interface';
+import { AppState } from 'src/app/store/app.reducer';
+import { setUser, unSetUser } from 'src/app/store/auth/auth.actions';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private auth: Auth) {
+  constructor(private auth: Auth, private store: Store<AppState>) {
     this.auth = getAuth();
+  }
+
+  initializeAuth() {
+    onAuthStateChanged(this.auth, (user: any) => {
+      const loggedUser: LoggedUser = {
+        username: user.email,
+        fullname: user.displayName,
+        uid: user.uid,
+        photoUrl: user.photoUrl,
+        expiresIn: user.stsTokenManager.expirationTime,
+        idToken: user.accessToken,
+        refreshToken: user.stsTokenManager.refreshToken,
+      };
+      user
+        ? this.store.dispatch(setUser({ user: loggedUser }))
+        : this.store.dispatch(unSetUser());
+    });
   }
 
   register(registerUser: RegisterUser): Observable<boolean> {
@@ -48,5 +63,9 @@ export class AuthService {
     return from(signInWithEmailAndPassword(this.auth, username, password)).pipe(
       catchError((err: FirebaseAuthError) => throwError(() => err))
     );
+  }
+
+  logout() {
+    return signOut(this.auth);
   }
 }

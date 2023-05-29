@@ -2,7 +2,19 @@ import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import {
+  ScreenTrackingService,
+  UserTrackingService,
+  getAnalytics,
+  provideAnalytics,
+} from '@angular/fire/analytics';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { getAuth, provideAuth } from '@angular/fire/auth';
+import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import {
   TranslateLoader,
   TranslateModule,
@@ -10,35 +22,29 @@ import {
 } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { AngularSvgIconModule } from 'angular-svg-icon';
-import { PrimeNGConfig } from 'primeng/api';
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
-import { environment } from '../environments/environment';
-import {
-  provideAnalytics,
-  getAnalytics,
-  ScreenTrackingService,
-  UserTrackingService,
-} from '@angular/fire/analytics';
-import { provideAuth, getAuth } from '@angular/fire/auth';
-import { provideFirestore, getFirestore } from '@angular/fire/firestore';
-import { StoreModule } from '@ngrx/store';
-import { appReducers } from './store/app.reducer';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { EffectsModule } from '@ngrx/effects';
-import { AuthEffects } from './store/auth/auth.effects';
+import { MessageService, PrimeNGConfig } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
 import { CustomMessageService } from 'src/app/shared/services/custom-message.service';
-import { MessageService } from 'primeng/api';
+import { environment } from '../environments/environment';
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { AuthService } from './modules/auth/services/auth.service';
 import { SpinnerModule } from './shared/components/spinner/spinner.module';
+import { appReducers } from './store/app.reducer';
+import { AuthEffects } from './store/auth/auth.effects';
 
 const initializeAppFactory =
-  (primeConfig: PrimeNGConfig, translate: TranslateService) => () => {
+  (
+    primeConfig: PrimeNGConfig,
+    translate: TranslateService,
+    auth: AuthService
+  ) =>
+  () => {
     primeConfig.ripple = true;
     translate.addLangs(['es', 'en']);
     translate.setDefaultLang('es');
     translate.use('es');
+    auth.initializeAuth();
   };
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -78,7 +84,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     {
       provide: APP_INITIALIZER,
       useFactory: initializeAppFactory,
-      deps: [PrimeNGConfig, TranslateService],
+      deps: [PrimeNGConfig, TranslateService, AuthService],
       multi: true,
     },
     ScreenTrackingService,
