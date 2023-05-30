@@ -8,18 +8,19 @@ const routes: Routes = [
     pathMatch: 'full',
     loadChildren: () =>
       import('./modules/home/home.module').then(m => m.HomeModule),
-    canLoad: [ AuthGuard ]
+    canLoad: [AuthGuard],
   },
   {
     path: 'auth',
     loadChildren: () =>
       import('./modules/auth/auth.module').then(m => m.AuthModule),
-      canLoad: [ AuthGuard ]
+    canLoad: [AuthGuard],
   },
   {
     path: 'list',
     loadChildren: () =>
       import('./modules/list/list.module').then(m => m.ListModule),
+    canLoad: [AuthGuard],
   },
   {
     path: '**',
