@@ -30,7 +30,6 @@ export class AuthService {
 
   initializeAuth() {
     onAuthStateChanged(this.auth, (user: any) => {
-      console.log(user);
       user ? this.setUserFromFirebase(user) : this.unSetUserFromFirebase();
     });
   }
@@ -73,7 +72,6 @@ export class AuthService {
   }
 
   isAuth(): Observable<boolean> {
-    console.log('isAuth')
     return new Observable(
       (subscribe) => {
         onAuthStateChanged(this.auth, (user) => {

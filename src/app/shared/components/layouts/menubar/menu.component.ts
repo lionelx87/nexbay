@@ -151,6 +151,8 @@ export class MenuComponent implements OnInit {
   //TODO: DELETE
   logout() {
     this.authService.logout();
-    this.customRoutingService.go( CustomRoute.LOGIN );
+    setTimeout(() => {
+      this.customRoutingService.go( CustomRoute.LOGIN );
+    }, 100);
   }
 }

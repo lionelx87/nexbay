@@ -34,8 +34,6 @@ export class AuthGuard implements CanActivate, CanLoad {
             allowed = false;
             this.customRoutingService.go( CustomRoute.HOME );
           }
-          console.log('Path: ', route.path);
-          console.log('Allowed: ', allowed);
           return allowed;
         })
       );
