@@ -72,6 +72,18 @@ export class AuthService {
     );
   }
 
+  isAuth(): Observable<boolean> {
+    console.log('isAuth')
+    return new Observable(
+      (subscribe) => {
+        onAuthStateChanged(this.auth, (user) => {
+          subscribe.next(!!user);
+        })
+      }
+    );
+  }
+
+
   logout() {
     return signOut(this.auth);
   }
