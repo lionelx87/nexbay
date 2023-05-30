@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { MenuItem } from 'primeng/api';
+import { CustomRoute } from 'src/app/core/models/routing.interface';
+import { CustomRoutingService } from 'src/app/core/services/custom-routing.service';
+import { AuthService } from 'src/app/modules/auth/services/auth.service';
+import { AppState } from 'src/app/store/app.reducer';
+import { unSetUser } from 'src/app/store/auth/auth.actions';
 
 @Component({
   selector: 'app-menu',
@@ -9,7 +15,11 @@ import { MenuItem } from 'primeng/api';
 export class MenuComponent implements OnInit {
   items: MenuItem[];
 
-  constructor() {}
+  constructor(
+    private customRoutingService: CustomRoutingService,
+    private store: Store<AppState>,
+    private authService: AuthService
+  ) {}
 
   ngOnInit(): void {
     this.items = [
@@ -133,7 +143,14 @@ export class MenuComponent implements OnInit {
       {
         label: 'Quit',
         icon: 'pi pi-fw pi-power-off',
+        command: () => this.logout()
       },
     ];
+  }
+
+  //TODO: DELETE
+  logout() {
+    this.authService.logout();
+    this.customRoutingService.go( CustomRoute.LOGIN );
   }
 }

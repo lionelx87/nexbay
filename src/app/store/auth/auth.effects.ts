@@ -101,7 +101,7 @@ export class AuthEffects {
       tap(() => this.store.dispatch(showLoading())),
       mergeMap(action =>
         this.authService.login(action.user).pipe(
-          map((user: UserCredential) => loginUserSuccess({ user })),
+          map((userFirebase: UserCredential) => loginUserSuccess({ user: JSON.parse(JSON.stringify(userFirebase)) })),
           catchError(err => {
             return of(loginUserFail({ error: err.code }));
           }),

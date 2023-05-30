@@ -30,19 +30,26 @@ export class AuthService {
 
   initializeAuth() {
     onAuthStateChanged(this.auth, (user: any) => {
-      const loggedUser: LoggedUser = {
-        username: user.email,
-        fullname: user.displayName,
-        uid: user.uid,
-        photoUrl: user.photoUrl,
-        expiresIn: user.stsTokenManager.expirationTime,
-        idToken: user.accessToken,
-        refreshToken: user.stsTokenManager.refreshToken,
-      };
-      user
-        ? this.store.dispatch(setUser({ user: loggedUser }))
-        : this.store.dispatch(unSetUser());
+      console.log(user);
+      user ? this.setUserFromFirebase(user) : this.unSetUserFromFirebase();
     });
+  }
+
+  private setUserFromFirebase(user: any) {
+    const loggedUser: LoggedUser = {
+      username: user.email,
+      fullname: user.displayName,
+      uid: user.uid,
+      photoUrl: user.photoUrl,
+      expiresIn: user.stsTokenManager.expirationTime,
+      idToken: user.accessToken,
+      refreshToken: user.stsTokenManager.refreshToken,
+    };
+    this.store.dispatch(setUser({ user: loggedUser }));
+  }
+
+  private unSetUserFromFirebase() {
+    this.store.dispatch(unSetUser());
   }
 
   register(registerUser: RegisterUser): Observable<boolean> {
