@@ -11,12 +11,14 @@ import {
 import { getAuth } from '@firebase/auth';
 import { Store } from '@ngrx/store';
 import { catchError, from, map, Observable, switchMap, throwError } from 'rxjs';
+import { CustomRoute } from 'src/app/core/models/routing.interface';
 import {
   FirebaseAuthError,
   LoggedUser,
   LoginUser,
   RegisterUser,
 } from 'src/app/core/models/user.interface';
+import { CustomRoutingService } from 'src/app/core/services/custom-routing.service';
 import { AppState } from 'src/app/store/app.reducer';
 import { setUser, unSetUser } from 'src/app/store/auth/auth.actions';
 
@@ -24,7 +26,11 @@ import { setUser, unSetUser } from 'src/app/store/auth/auth.actions';
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private auth: Auth, private store: Store<AppState>) {
+  constructor(
+    private auth: Auth,
+    private store: Store<AppState>,
+    private customRoutingService: CustomRoutingService
+  ) {
     this.auth = getAuth();
   }
 
@@ -72,17 +78,16 @@ export class AuthService {
   }
 
   isAuth(): Observable<boolean> {
-    return new Observable(
-      (subscribe) => {
-        onAuthStateChanged(this.auth, (user) => {
-          subscribe.next(!!user);
-        })
-      }
-    );
+    return new Observable(subscribe => {
+      onAuthStateChanged(this.auth, user => {
+        subscribe.next(!!user);
+      });
+    });
   }
 
-
   logout() {
-    return signOut(this.auth);
+    signOut(this.auth).then(() =>
+      this.customRoutingService.go(CustomRoute.LOGIN)
+    );
   }
 }

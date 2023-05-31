@@ -143,16 +143,12 @@ export class MenuComponent implements OnInit {
       {
         label: 'Quit',
         icon: 'pi pi-fw pi-power-off',
-        command: () => this.logout()
+        command: () => this.logout(),
       },
     ];
   }
 
-  //TODO: DELETE
   logout() {
     this.authService.logout();
-    setTimeout(() => {
-      this.customRoutingService.go( CustomRoute.LOGIN );
-    }, 100);
   }
 }
