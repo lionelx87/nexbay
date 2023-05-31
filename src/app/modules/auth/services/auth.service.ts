@@ -1,19 +1,20 @@
 import { Injectable } from '@angular/core';
 import {
   Auth,
+  UserCredential,
   createUserWithEmailAndPassword,
   onAuthStateChanged,
   signInWithEmailAndPassword,
   signOut,
   updateProfile,
-  UserCredential,
 } from '@angular/fire/auth';
 import { getAuth } from '@firebase/auth';
 import { Store } from '@ngrx/store';
-import { catchError, from, map, Observable, switchMap, throwError } from 'rxjs';
+import { Observable, catchError, from, map, switchMap, throwError } from 'rxjs';
 import { CustomRoute } from 'src/app/core/models/routing.interface';
 import {
   FirebaseAuthError,
+  FirebaseUser,
   LoggedUser,
   LoginUser,
   RegisterUser,
@@ -40,8 +41,13 @@ export class AuthService {
     });
   }
 
-  private setUserFromFirebase(user: any) {
-    const loggedUser: LoggedUser = {
+  private setUserFromFirebase(user: FirebaseUser) {
+    const loggedUser: LoggedUser = this.getLoggedUser(user);
+    this.store.dispatch(setUser({ user: loggedUser }));
+  }
+
+  private getLoggedUser(user: FirebaseUser): LoggedUser {
+    return {
       username: user.email,
       fullname: user.displayName,
       uid: user.uid,
@@ -50,7 +56,6 @@ export class AuthService {
       idToken: user.accessToken,
       refreshToken: user.stsTokenManager.refreshToken,
     };
-    this.store.dispatch(setUser({ user: loggedUser }));
   }
 
   private unSetUserFromFirebase() {

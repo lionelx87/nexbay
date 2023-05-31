@@ -14,11 +14,23 @@ export interface LoggedUser {
   fullname: string; // displayName
   uid: string;
   photoUrl: string;
-  expiresIn: string;
+  expiresIn: number;
   idToken: string;
   refreshToken: string;
 }
 
 export interface FirebaseAuthError {
   code: string;
+}
+
+export interface FirebaseUser {
+  email: string;
+  displayName: string;
+  uid: string;
+  photoUrl: string;
+  accessToken: string;
+  stsTokenManager: {
+    expirationTime: number;
+    refreshToken: string;
+  };
 }
