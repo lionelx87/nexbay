@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
+import { Modals } from 'src/app/core/models/modal.interface';
 import { ModalService } from 'src/app/shared/components/modals/services/modal.service';
-import { Modals } from 'src/app/shared/components/modals/types/modals.types';
 
 @Component({
   selector: 'app-home-page',
