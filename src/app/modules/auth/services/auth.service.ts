@@ -11,15 +11,15 @@ import {
 import { getAuth } from '@firebase/auth';
 import { Store } from '@ngrx/store';
 import { Observable, catchError, from, map, switchMap, throwError } from 'rxjs';
-import { CustomRoute } from 'src/app/core/models/routing.interface';
+import { CustomRoute } from 'src/app/shared/models/routing.interface';
 import {
   FirebaseAuthError,
   FirebaseUser,
   LoggedUser,
   LoginUser,
   RegisterUser,
-} from 'src/app/core/models/user.interface';
-import { CustomRoutingService } from 'src/app/core/services/custom-routing.service';
+} from 'src/app/shared/models/user.interface';
+import { CustomRoutingService } from 'src/app/shared/services/custom-routing.service';
 import { AppState } from 'src/app/store/app.reducer';
 import { setUser, unSetUser } from 'src/app/store/auth/auth.actions';
 

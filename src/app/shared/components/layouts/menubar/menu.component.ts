@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { MenuItem } from 'primeng/api';
-import { CustomRoute } from 'src/app/core/models/routing.interface';
-import { CustomRoutingService } from 'src/app/core/services/custom-routing.service';
+import { CustomRoutingService } from 'src/app/shared/services/custom-routing.service';
 import { AuthService } from 'src/app/modules/auth/services/auth.service';
 import { AppState } from 'src/app/store/app.reducer';
-import { unSetUser } from 'src/app/store/auth/auth.actions';
 
 @Component({
   selector: 'app-menu',

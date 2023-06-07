@@ -5,7 +5,7 @@ import {
   LoggedUser,
   LoginUser,
   RegisterUser,
-} from 'src/app/core/models/user.interface';
+} from 'src/app/shared/models/user.interface';
 
 export const registerUser = createAction(
   '[User] Register User',

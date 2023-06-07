@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { MessageService } from 'primeng/api';
 import {
   CustomMessage
-} from 'src/app/core/models/message.interface';
+} from 'src/app/shared/models/message.interface';
 
 @Injectable({
   providedIn: 'root',

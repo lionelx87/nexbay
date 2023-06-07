@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { CustomRoute } from 'src/app/core/models/routing.interface';
-import { CustomRoutingService } from 'src/app/core/services/custom-routing.service';
+import { CustomRoute } from 'src/app/shared/models/routing.interface';
+import { CustomRoutingService } from 'src/app/shared/services/custom-routing.service';
 import { ModalService } from '../../services/modal.service';
 
 @Component({

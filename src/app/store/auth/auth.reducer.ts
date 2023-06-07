@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 import { setUser, unSetUser } from './auth.actions';
-import { LoggedUser } from 'src/app/core/models/user.interface';
+import { LoggedUser } from 'src/app/shared/models/user.interface';
 
 export interface AuthState {
   user: LoggedUser | null;

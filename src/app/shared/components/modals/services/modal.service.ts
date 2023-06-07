@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
-import { ModalConfig } from '../../../../core/models/modal.interface';
+import { ModalConfig } from '../../../models/modal.interface';
 
 @Injectable({
   providedIn: 'root',

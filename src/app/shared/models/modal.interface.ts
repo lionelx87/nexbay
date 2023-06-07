@@ -1,5 +1,5 @@
 import { Type } from '@angular/core';
-import { CreateListModalComponent } from '../../shared/components/modals/components/create-list-modal/create-list-modal.component';
+import { CreateListModalComponent } from '../components/modals/components/create-list-modal/create-list-modal.component';
 
 export const Modals = {
   CREATE_LIST: CreateListModalComponent,
