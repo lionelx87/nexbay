@@ -44,10 +44,16 @@ describe('Register component', () => {
     expect(usernameField?.valid).toBeFalsy();
   });
 
-  it('username field should have a valid email format', () => {
+  it('username field should fail on invalid formatting', () => {
     const usernameField = component.formRegister.get('username');
     usernameField?.setValue('test@');
     expect(usernameField?.valid).toBeFalsy();
+  });
+
+  it('username field should pass before a valid format', () => {
+    const usernameField = component.formRegister.get('username');
+    usernameField?.setValue('test@test.com');
+    expect(usernameField?.valid).toBeTruthy();
   });
 
   it('password field should be required', () => {
