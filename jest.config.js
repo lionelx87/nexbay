@@ -4,4 +4,5 @@ module.exports = {
   collectCoverage: true,
   coverageDirectory: 'coverage/youlist',
   setupFilesAfterEnv: ['<rootDir>/src/setupJest.ts'],
+  verbose: true
 };
