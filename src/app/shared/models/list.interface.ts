@@ -1,23 +1,30 @@
-enum ItemStates {
+export const enum ListState {
   PENDING = 'pending',
   COMPLETED = 'completed',
 }
 
-enum ListItemStates {
+export const enum ItemState {
   PENDING = 'pending',
   COMPLETED = 'completed',
 }
 
-type ItemListState = ItemStates.PENDING | ItemStates.COMPLETED;
-
-type ListState = ListItemStates.PENDING | ListItemStates.COMPLETED;
-
-export interface ItemList {
+export interface Item {
   description: string;
-  state: ItemListState;
+  state: ItemState;
 }
 
 export interface List {
-  items: ItemList[];
+  name: string;
+  items: Item[];
   state: ListState;
+}
+
+export const enum DisplayMode {
+  EDITION,
+  LIVE,
+}
+
+export interface ListViewer {
+  list: List;
+  mode: DisplayMode;
 }
