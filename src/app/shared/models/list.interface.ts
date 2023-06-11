@@ -14,6 +14,7 @@ export interface Item {
 }
 
 export interface List {
+  id: string | null;
   name: string;
   items: Item[];
   state: ListState;
