@@ -9,6 +9,7 @@ export const enum ItemState {
 }
 
 export interface Item {
+  id: string | null;
   description: string;
   state: ItemState;
 }
