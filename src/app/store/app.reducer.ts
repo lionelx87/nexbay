@@ -1,16 +1,16 @@
 import { ActionReducerMap } from '@ngrx/store';
-import { UiState, uiReducer } from './ui/ui.reducer';
+import { ExperienceState, experienceReducer } from './experience/experience.reducer';
 import { AuthState, authReducer } from './auth/auth.reducer';
 import { ListStoreState, listReducer } from './list/list.reducer';
 
 export interface AppState {
-  ui: UiState;
+  experience: ExperienceState;
   auth: AuthState;
   list: ListStoreState;
 }
 
 export const appReducers: ActionReducerMap<AppState> = {
-  ui: uiReducer,
+  experience: experienceReducer,
   auth: authReducer,
   list: listReducer,
 };

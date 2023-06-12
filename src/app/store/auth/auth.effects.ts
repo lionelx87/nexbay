@@ -10,7 +10,7 @@ import { CustomRoutingService } from 'src/app/shared/services/custom-routing.ser
 import { AuthService } from 'src/app/modules/auth/services/auth.service';
 import { CustomMessageService } from 'src/app/shared/services/custom-message.service';
 import { AppState } from '../app.reducer';
-import { hideLoading, showLoading } from '../ui/ui.actions';
+import { hideLoading, showLoading } from '../experience/experience.actions';
 import {
   loginUser,
   loginUserFail,

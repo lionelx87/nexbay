@@ -14,6 +14,6 @@ export class SpinnerComponent implements OnInit {
   constructor(private store: Store<AppState>) {}
 
   ngOnInit(): void {
-    this.show$ = this.store.select('ui').pipe(map(({ loading }) => loading));
+    this.show$ = this.store.select('experience').pipe(map(({ loading }) => loading));
   }
 }
