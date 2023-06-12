@@ -1,5 +1,11 @@
 <div class="create-list">
-  <input type="text" class="w-full" pInputText autofocus [(ngModel)]="listName" />
+  <input
+    type="text"
+    class="w-full"
+    pInputText
+    autofocus
+    [(ngModel)]="listName"
+    (keydown.enter)="go()" />
   <div class="flex justify-content-center mt-5 gap-6 mx-1">
     <button
       pButton
@@ -15,7 +21,6 @@
       label="Aceptar"
       class="flex-1"
       [disabled]="emptyListName"
-      (click)="go()"
-      ></button>
+      (click)="go()"></button>
   </div>
 </div>

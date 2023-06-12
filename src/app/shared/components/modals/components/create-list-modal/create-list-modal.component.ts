@@ -29,9 +29,11 @@ export class CreateListModalComponent implements OnInit {
   }
 
   go(): void {
-    this.store.dispatch(createDraft({ draft: this.normalizeListName() }));
-    this.customRoutingService.go(CustomRoute.LIST);
-    this.close();
+    if(!this.emptyListName) {
+      this.store.dispatch(createDraft({ draft: this.normalizeListName() }));
+      this.customRoutingService.go(CustomRoute.LIST);
+      this.close();
+    }
   }
 
   normalizeListName(): string {
