@@ -1,6 +1,7 @@
 export const enum ListState {
   PENDING = 'pending',
   COMPLETED = 'completed',
+  EMPTY = 'empty',
 }
 
 export const enum ItemState {

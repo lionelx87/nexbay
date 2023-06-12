@@ -1,5 +1,5 @@
 <div class="create-list">
-  <input type="text" class="w-full" pInputText autofocus [(ngModel)]="list" />
+  <input type="text" class="w-full" pInputText autofocus [(ngModel)]="listName" />
   <div class="flex justify-content-center mt-5 gap-6 mx-1">
     <button
       pButton
@@ -14,7 +14,7 @@
       type="button"
       label="Aceptar"
       class="flex-1"
-      [disabled]="emptyList"
+      [disabled]="emptyListName"
       (click)="go()"
       ></button>
   </div>

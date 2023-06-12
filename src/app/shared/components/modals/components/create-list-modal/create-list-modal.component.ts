@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { CustomRoute } from 'src/app/shared/models/routing.interface';
 import { CustomRoutingService } from 'src/app/shared/services/custom-routing.service';
+import { AppState } from 'src/app/store/app.reducer';
+import { createDraft } from 'src/app/store/list/list.actions';
 import { ModalService } from '../../services/modal.service';
 
 @Component({
@@ -9,27 +12,33 @@ import { ModalService } from '../../services/modal.service';
   styleUrls: ['./create-list-modal.component.scss'],
 })
 export class CreateListModalComponent implements OnInit {
-  list: string;
+  listName: string;
 
   constructor(
     private modalService: ModalService,
-    private customRoutingService: CustomRoutingService
+    private customRoutingService: CustomRoutingService,
+    private store: Store<AppState>
   ) {}
 
-  get emptyList(): boolean {
-    return this.list.trim().length <= 0;
+  get emptyListName(): boolean {
+    return this.listName.trim().length <= 0;
   }
 
   ngOnInit(): void {
-    this.list = '';
+    this.listName = '';
   }
 
-  go() {
+  go(): void {
+    this.store.dispatch(createDraft({ draft: this.normalizeListName() }));
     this.customRoutingService.go(CustomRoute.LIST);
     this.close();
   }
 
-  close() {
+  normalizeListName(): string {
+    return this.listName.trim().toLocaleLowerCase();
+  }
+
+  close(): void {
     this.modalService.close();
   }
 }
