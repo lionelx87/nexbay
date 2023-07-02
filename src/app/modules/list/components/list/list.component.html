@@ -1,0 +1,19 @@
+<p-orderList
+  [value]="list.items"
+  [listStyle]="{ 'max-height': '30rem' }"
+  header="List of Products"
+  filterBy="description"
+  filterPlaceholder="Filter by category"
+  [dragdrop]="true">
+  <ng-template let-product pTemplate="item">
+    <div class="product-item">
+      <div class="product-list-detail">
+        <i class="pi pi-tag product-category-icon"></i>
+        <span class="product-category">{{ product.description }}</span>
+      </div>
+      <div class="product-list-action">
+        action
+      </div>
+    </div>
+  </ng-template>
+</p-orderList>
