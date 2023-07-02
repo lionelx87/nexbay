@@ -38,5 +38,9 @@
         "startUp": {
             "title": "Create List"
         }
+    },
+    "list": {
+        "filterText": "Filter by description",
+        "inputText": "Search for an entry in the list"
     }
 }

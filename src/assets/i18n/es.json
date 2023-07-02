@@ -38,5 +38,9 @@
         "startUp": {
             "title": "Crear Lista"
         }
+    },
+    "list": {
+        "filterText": "Filtre por descripción",
+        "inputText": "Busque una entrada en la lista"
     }
 }

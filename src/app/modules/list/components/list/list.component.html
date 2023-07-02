@@ -3,7 +3,7 @@
   [listStyle]="{ 'max-height': '30rem' }"
   [header]="list.name | titlecase"
   filterBy="description"
-  filterPlaceholder="Filter by description"
+  [filterPlaceholder]=" 'list.filterText' | translate "
   [dragdrop]="true">
   <ng-template let-item pTemplate="item">
     <div class="item">
@@ -25,7 +25,7 @@
 <div class="add-item">
   <span class="p-input-icon-right w-full">
     <i class="pi pi-plus"></i>
-    <input type="text" class="w-full" pInputText />
+    <input type="text" class="w-full" [placeholder]=" 'list.inputText' | translate " pInputText />
 </span>
 </div>
 
