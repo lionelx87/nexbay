@@ -31,11 +31,17 @@
     }
 }
 
+.add-item {
+    padding: 1.25rem;
+    background: #071426;
+    border: 1px solid #0b213f;
+}
+
 :host ::ng-deep {
     .p-orderlist-controls{
       display: none;
     }
-    .p-element {
+    .p-element:not(input) {
         padding: 0 1.25rem !important;
     }
 }

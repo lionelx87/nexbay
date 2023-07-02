@@ -8,9 +8,10 @@ import { ListRoutingModule } from './list-routing.module';
 import { ListPageComponent } from './pages/list-page/list-page.component';
 import { ButtonModule } from 'primeng/button';
 import { RippleModule } from 'primeng/ripple';
+import {InputTextModule} from 'primeng/inputtext';
 
 @NgModule({
   declarations: [ListPageComponent, ListComponent],
-  imports: [CommonModule, ListRoutingModule, MenuModule, OrderListModule, ButtonModule, RippleModule],
+  imports: [CommonModule, ListRoutingModule, MenuModule, OrderListModule, ButtonModule, RippleModule, InputTextModule],
 })
 export class ListModule {}
