@@ -3,7 +3,7 @@
   [listStyle]="{ 'max-height': '30rem' }"
   [header]="list.name | titlecase"
   filterBy="description"
-  [filterPlaceholder]=" 'list.filterText' | translate "
+  [filterPlaceholder]="'list.filterText' | translate"
   [dragdrop]="true">
   <ng-template let-item pTemplate="item">
     <div class="item">
@@ -11,7 +11,7 @@
         <i class="pi pi-tag item-detail__icon"></i>
         <span class="item-detail__description">{{ item.description }}</span>
       </div>
-      <div *ngIf="isEditionMode" class="item-action">
+      <div *ngIf="mode | isEditionMode" class="item-action">
         <button
           pButton
           pRipple
@@ -22,10 +22,13 @@
     </div>
   </ng-template>
 </p-orderList>
-<div *ngIf="isEditionMode" class="add-item">
+<div *ngIf="mode | isEditionMode" class="add-item">
   <span class="p-input-icon-right w-full">
     <i class="pi pi-plus"></i>
-    <input type="text" class="w-full" [placeholder]=" 'list.inputText' | translate " pInputText />
-</span>
+    <input
+      type="text"
+      class="w-full"
+      [placeholder]="'list.inputText' | translate"
+      pInputText />
+  </span>
 </div>
-

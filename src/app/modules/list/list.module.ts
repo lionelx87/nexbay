@@ -10,9 +10,10 @@ import { ButtonModule } from 'primeng/button';
 import { RippleModule } from 'primeng/ripple';
 import { InputTextModule } from 'primeng/inputtext';
 import { TranslateModule } from '@ngx-translate/core';
+import { IsEditionModePipe } from './pipes/is-edition-mode.pipe';
 
 @NgModule({
-  declarations: [ListPageComponent, ListComponent],
+  declarations: [ListPageComponent, ListComponent, IsEditionModePipe],
   imports: [
     CommonModule,
     ListRoutingModule,

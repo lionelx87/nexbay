@@ -29,11 +29,6 @@ export class ListComponent implements OnInit {
 
   constructor() { }
 
-  get isEditionMode(): boolean {
-    console.log(this.mode === DisplayMode.EDITION);
-    return this.mode === DisplayMode.EDITION;
-  }
-
   ngOnInit(): void {
     console.log('');
   }
