@@ -44,4 +44,8 @@
     .p-element:not(input) {
         padding: 0 1.25rem !important;
     }
+    li.p-element {
+        display: flex;
+        min-height: 4rem;
+    }
 }

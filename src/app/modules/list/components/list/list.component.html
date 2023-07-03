@@ -11,7 +11,7 @@
         <i class="pi pi-tag item-detail__icon"></i>
         <span class="item-detail__description">{{ item.description }}</span>
       </div>
-      <div class="item-action">
+      <div *ngIf="isEditionMode" class="item-action">
         <button
           pButton
           pRipple
@@ -22,7 +22,7 @@
     </div>
   </ng-template>
 </p-orderList>
-<div class="add-item">
+<div *ngIf="isEditionMode" class="add-item">
   <span class="p-input-icon-right w-full">
     <i class="pi pi-plus"></i>
     <input type="text" class="w-full" [placeholder]=" 'list.inputText' | translate " pInputText />

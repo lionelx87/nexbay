@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { ItemState, List, ListState } from 'src/app/shared/models/list.interface';
+import { Component, Input, OnInit } from '@angular/core';
+import { DisplayMode, ItemState, List, ListState } from 'src/app/shared/models/list.interface';
 
 @Component({
   selector: 'app-list',
@@ -7,6 +7,7 @@ import { ItemState, List, ListState } from 'src/app/shared/models/list.interface
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements OnInit {
+  @Input() mode: DisplayMode = DisplayMode.EDITION;
 
   list: List = {
     id: null,
@@ -27,6 +28,11 @@ export class ListComponent implements OnInit {
   }
 
   constructor() { }
+
+  get isEditionMode(): boolean {
+    console.log(this.mode === DisplayMode.EDITION);
+    return this.mode === DisplayMode.EDITION;
+  }
 
   ngOnInit(): void {
     console.log('');
