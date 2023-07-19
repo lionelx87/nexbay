@@ -3,12 +3,12 @@ import { List, ListState } from 'src/app/shared/models/list.interface';
 import { createDraft } from './list.actions';
 
 export interface ListStoreState {
-  draft: List | null;
+  currentList: List | null;
   lists: List[];
 }
 
 export const initialState: ListStoreState = {
-  draft: null,
+  currentList: null,
   lists: [],
 };
 
@@ -16,7 +16,7 @@ const _listReducer = createReducer(
   initialState,
   on(createDraft, (state, { draft }) => ({
     ...state,
-    draft: {
+    currentList: {
       id: null,
       name: draft,
       items: [],
