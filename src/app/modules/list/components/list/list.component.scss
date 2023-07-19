@@ -49,3 +49,8 @@
         min-height: 4rem;
     }
 }
+
+.empty__container, .empty-filter__container {
+    text-align: center;
+    color: var(--gray-500);
+}

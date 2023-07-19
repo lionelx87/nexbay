@@ -21,6 +21,16 @@
       </div>
     </div>
   </ng-template>
+  <ng-template pTemplate="empty">
+    <div class="empty__container">
+      <span>Agregue su primera entrada a la lista!</span>
+    </div>
+  </ng-template>
+  <ng-template pTemplate="emptyfilter">
+    <div class="empty-filter__container">
+      <span>No hay ítem que coincida con su búsqueda</span>
+    </div>
+  </ng-template>
 </p-orderList>
 <div *ngIf="mode | isEditionMode" class="add-item">
   <span class="p-input-icon-right w-full">
